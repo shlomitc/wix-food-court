@@ -1,15 +1,16 @@
 import React from 'react';
 import s from './App.scss';
+import SearchBar from '../SearchBar';
+import SearchResults from '../SearchResults';
 
 function App() {
   return (
     <div className={s.root}>
       <div className={s.header}>
-        <h2>{'Hello World!'}</h2>
+        <h2>{'Food Court!'}</h2>
       </div>
-      <p className={s.intro}>
-        {'Get started here: https://github.com/wix/yoshi'}
-      </p>
+      <SearchBar/>
+      <SearchResults/>
     </div>
   );
 }
