@@ -9,8 +9,14 @@ function App() {
       <div className={s.header}>
         <h2>{'Food Court!'}</h2>
       </div>
-      <SearchBar/>
-      <SearchResults/>
+      <div className={s.searchPane}>
+        <div className={s.searchBar}>
+          <SearchBar/>
+        </div>
+      </div>
+      <div className={s.searchResultsPane}>
+        <SearchResults/>
+      </div>
     </div>
   );
 }

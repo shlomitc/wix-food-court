@@ -3,12 +3,24 @@
 }
 
 .header {
-  background-color: #222;
+  background-color: rgb(214, 159, 57);
   padding: 10px;
   color: white;
   font-size: 20pt;
 }
 
-.intro {
+.searchPane {
+  background-color: rgb(107, 124, 11);
   font-size: 15pt;
+  padding: 3pt 3pt;
+}
+
+.searchBar {
+  margin: auto;
+  width: 50%;
+}
+.searchResultsPane {
+  background-color: rgb(125, 199, 46);
+  font-size: 15pt;
+  padding: 3pt;
 }
