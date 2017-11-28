@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Search from 'wix-style-react/Search';
+import Label from 'wix-style-react/Label';
 
 const SearchBar = props => {
 
@@ -16,11 +17,20 @@ const SearchBar = props => {
   });
 
   return (
-    <Search
-      closeOnSelect={false}
-      onManuallyInput={handleManuallyInput}
-      options={options}
-      />
+    <div>
+      <Label for="search">
+        Filter by Name
+      </Label>
+
+      <Search
+        id="search"
+        closeOnSelect={false}
+        onManuallyInput={handleManuallyInput}
+        options={options}
+        placeholder="Filter"
+        />
+
+    </div>
   );
 };
 
