@@ -16,6 +16,7 @@ const SearchBar = props => {
     };
   });
 
+  //TODO: put Label beside the input, not above it.
   return (
     <div>
       <Label for="search">
