@@ -3,12 +3,7 @@ import PropTypes from 'prop-types';
 import DataTable from 'wix-style-react/DataTable';
 
 const SearchResults = props => {
-  const data = props.data.map(item => {
-    return {
-      title: item.title.he_IL,
-      phone: item.contact.phone
-    };
-  }).filter(row => {
+  const data = props.data.filter(row => {
     return row.title.includes(props.filterStr);
   });
 

@@ -8,16 +8,24 @@ const SearchBar = props => {
   const handleManuallyInput = inputValue => {
     props.updateFilter(inputValue);
   };
+  const options = props.data.map((item, index) => {
+    return {
+      id: index,
+      value: item.title
+    };
+  });
 
   return (
     <Search
       closeOnSelect={false}
       onManuallyInput={handleManuallyInput}
+      options={options}
       />
   );
 };
 
 SearchBar.propTypes = {
+  data: PropTypes.array.isRequired,
   updateFilter: PropTypes.func.isRequired
 };
 

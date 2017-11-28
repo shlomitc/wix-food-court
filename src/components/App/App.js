@@ -15,7 +15,12 @@ class App extends React.Component {
   }
 
   render() {
-
+    const data = staticData.value.results.map(item => {
+      return {
+        title: item.title.he_IL,
+        phone: item.contact.phone
+      };
+    });
     return (
       <div className={s.root}>
         <div className={s.header}>
@@ -23,12 +28,15 @@ class App extends React.Component {
         </div>
         <div className={s.searchPane}>
           <div className={s.searchBar}>
-            <SearchBar updateFilter={this.updateFilterStr}/>
+            <SearchBar
+              data={data}
+              updateFilter={this.updateFilterStr}
+              />
           </div>
         </div>
         <div className={s.searchResultsPane}>
           <SearchResults
-            data={staticData.value.results}
+            data={data}
             filterStr={this.state.filterStr}
             />
         </div>
