@@ -13,6 +13,18 @@ class App extends React.Component {
     //TODO: use autobind decorator
     this.updateFilterStr = this.updateFilterStr.bind(this);
   }
+  /**
+   * Creates a filtered data array, selecting only rows in which the value of
+   * the property named [filedName] includes the filter string.
+   * @param {*} data Array of items (objects). An object must have a property named fieldName.
+   * @param {*} filterStr the filter string
+   * @param {*} fieldName the property to filter on.
+   */
+  static getFilteredData(data, filterStr, fieldName) {
+    return data.filter(row => {
+      return row[fieldName].includes(filterStr);
+    });
+  }
 
   render() {
     const data = staticData.value.results.map(item => {
@@ -36,8 +48,7 @@ class App extends React.Component {
         </div>
         <div className={s.searchResultsPane}>
           <SearchResults
-            data={data}
-            filterStr={this.state.filterStr}
+            data={App.getFilteredData(data, this.state.filterStr, 'title')}
             />
         </div>
       </div>
