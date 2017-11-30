@@ -1,3 +1,4 @@
+/* eslint-disable */
 const data = {
    "timestamp":1471188245440,
    "value":{
