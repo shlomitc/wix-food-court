@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import s from './SearchBar.scss';
 import Search from 'wix-style-react/Search';
 import Label from 'wix-style-react/Label';
 
@@ -18,7 +19,7 @@ const SearchBar = props => {
 
   //TODO: put Label beside the input, not above it.
   return (
-    <div>
+    <div className={s.searchBar}>
       <Label for="search">
         Filter by Name
       </Label>
@@ -30,7 +31,6 @@ const SearchBar = props => {
         options={options}
         placeholder="Filter"
         />
-
     </div>
   );
 };

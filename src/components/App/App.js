@@ -39,12 +39,10 @@ class App extends React.Component {
           <h2>{'Food Court!'}</h2>
         </div>
         <div className={s.searchPane}>
-          <div className={s.searchBar}>
-            <SearchBar
-              data={data}
-              updateFilter={this.updateFilterStr}
-              />
-          </div>
+          <SearchBar
+            data={data}
+            updateFilter={this.updateFilterStr}
+            />
         </div>
         <div className={s.searchResultsPane}>
           <SearchResults
