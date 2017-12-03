@@ -2,6 +2,8 @@ import React from 'react';
 import {expect} from 'chai';
 import {mount} from 'enzyme';
 import App from './App';
+import SearchBar from '../SearchBar';
+import SearchResults from '../SearchResults';
 
 describe('App', () => {
   let wrapper;
@@ -24,4 +26,14 @@ describe('App', () => {
     expect(App.getFilteredData(data, 'ab', 'title').length).to.eq(1);
     expect(App.getFilteredData(data, 'a', 'title').length).to.eq(2);
   });
+
+  it('renders SearchBar and SearchResults', () => {
+    wrapper = mount(
+      <App/>, {attachTo: document.createElement('div')}
+    );
+    expect(wrapper.find(SearchBar)).to.have.length(1);
+    expect(wrapper.find(SearchResults)).to.have.length(1);
+
+  });
+
 });
