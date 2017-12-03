@@ -14,10 +14,11 @@ describe('SearchBar', () => {
       <SearchBar
         data={[]}
         updateFilter={() => {}}
+        fireSearch={() => {}}
         />,
        {attachTo: document.createElement('div')}
     );
-    expect(wrapper.find(Search).length).to.eq(1);
+    expect(wrapper.find(Search).length).to.eq(2);
   });
 
 });

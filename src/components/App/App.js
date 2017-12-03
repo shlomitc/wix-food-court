@@ -12,6 +12,7 @@ class App extends React.Component {
     };
     //TODO: use autobind decorator
     this.updateFilterStr = this.updateFilterStr.bind(this);
+    this.fireSearch = this.fireSearch.bind(this);
   }
   /**
    * Creates a filtered data array, selecting only rows in which the value of
@@ -42,6 +43,7 @@ class App extends React.Component {
           <SearchBar
             data={data}
             updateFilter={this.updateFilterStr}
+            fireSearch={this.fireSearch}
             />
         </div>
         <div className={s.searchResultsPane}>
@@ -54,8 +56,16 @@ class App extends React.Component {
   }
 
   updateFilterStr(filterStr) {
+    // TODO: set searchTerm
     this.setState({
       filterStr
+    });
+  }
+
+  fireSearch(searchTerm) {
+    this.setState({
+      filterStr: '',
+      searchTerm
     });
   }
 }

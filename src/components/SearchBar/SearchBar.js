@@ -2,14 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import s from './SearchBar.scss';
 import Search from 'wix-style-react/Search';
-import Label from 'wix-style-react/Label';
 
 const SearchBar = props => {
 
   // ESLint forces handler to be prefixed by 'handle'
-  const handleManuallyInput = inputValue => {
+  const handleManuallyInputFilter = inputValue => {
     props.updateFilter(inputValue);
   };
+
+  // ESLint forces handler to be prefixed by 'handle'
+  const handleManuallyInputSearch = inputValue => {
+    props.fireSearchRequest(inputValue);
+  };
+
   const options = props.data.map((item, index) => {
     return {
       id: index,
@@ -17,23 +22,35 @@ const SearchBar = props => {
     };
   });
 
-  //TODO: put Label beside the input, not above it.
+  //TODO: put inputs beside one another
   return (
-    <div className={s.searchBar}>
-      <Search
-        id="search"
-        closeOnSelect={false}
-        onManuallyInput={handleManuallyInput}
-        options={options}
-        placeholder="Filter By Name"
-        />
+    <div >
+      <div className={s.searchInput}>
+        <Search
+          id="search"
+          closeOnSelect={false}
+          onManuallyInput={handleManuallyInputSearch}
+          options={options}
+          placeholder="Search Term"
+          />
+      </div>
+      <div className={s.filterInput}>
+        <Search
+          id="filter"
+          closeOnSelect={false}
+          onManuallyInput={handleManuallyInputFilter}
+          options={options}
+          placeholder="Filter By Name"
+          />
+      </div>
     </div>
   );
 };
 
 SearchBar.propTypes = {
   data: PropTypes.array.isRequired,
-  updateFilter: PropTypes.func.isRequired
+  updateFilter: PropTypes.func.isRequired,
+  fireSearch: PropTypes.func.isRequired
 };
 
 
