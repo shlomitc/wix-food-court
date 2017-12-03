@@ -20,16 +20,12 @@ const SearchBar = props => {
   //TODO: put Label beside the input, not above it.
   return (
     <div className={s.searchBar}>
-      <Label for="search">
-        Filter by Name
-      </Label>
-
       <Search
         id="search"
         closeOnSelect={false}
         onManuallyInput={handleManuallyInput}
         options={options}
-        placeholder="Filter"
+        placeholder="Filter By Name"
         />
     </div>
   );
