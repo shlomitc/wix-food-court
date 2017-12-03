@@ -1,8 +1,10 @@
 import React from 'react';
+import update from 'immutability-helper';
 import s from './App.scss';
 import SearchBar from '../SearchBar';
 import SearchResults from '../SearchResults';
 import staticData from '../../data';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -56,10 +58,9 @@ class App extends React.Component {
   }
 
   updateFilterStr(filterStr) {
-    // TODO: set searchTerm
-    this.setState({
-      filterStr
-    });
+    this.setState(update(this.state, {
+      filterStr: {$set: filterStr}
+    }));
   }
 
   fireSearch(searchTerm) {
@@ -67,6 +68,7 @@ class App extends React.Component {
       filterStr: '',
       searchTerm
     });
+    // TODO: fetch
   }
 }
 
