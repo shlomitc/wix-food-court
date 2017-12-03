@@ -8,7 +8,7 @@ describe('React application', () => {
   describe('open page', () => {
     it('should display title', async () => {
       await browser.get('/');
-      expect(await $('h2').getText()).to.eql('Hello World!');
+      expect(await $('h2').getText()).to.eql('Food Court!');
     });
   });
 });
