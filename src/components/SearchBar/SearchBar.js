@@ -12,7 +12,7 @@ const SearchBar = props => {
 
   // ESLint forces handler to be prefixed by 'handle'
   const handleManuallyInputSearch = inputValue => {
-    props.fireSearchRequest(inputValue);
+    props.fireSearch(inputValue);
   };
 
   const options = props.data.map((item, index) => {
