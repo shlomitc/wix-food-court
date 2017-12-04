@@ -11,4 +11,14 @@ describe('React application', () => {
       expect(await $('h2').getText()).to.eql('Food Court!');
     });
   });
+
+  describe('filter static results', () => {
+    it('should show all data when filter string is empty', async () => {
+      // await browser.get('/');
+    });
+    it('should filtered results', async () => {
+      // await browser.get('/');
+    });
+
+  });
 });
