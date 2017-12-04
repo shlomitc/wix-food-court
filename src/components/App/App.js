@@ -1,5 +1,7 @@
 import React from 'react';
 import update from 'immutability-helper';
+import autobind from 'autobind-decorator';
+
 import s from './App.scss';
 import SearchBar from '../SearchBar';
 import SearchResults from '../SearchResults';
@@ -15,9 +17,7 @@ class App extends React.Component {
       searchResults: [],
       searchInProgress: false
     };
-    //TODO: use autobind decorator
-    this.updateFilterStr = this.updateFilterStr.bind(this);
-    this.fireSearch = this.fireSearch.bind(this);
+
   }
   /**
    * Creates a filtered data array, selecting only rows in which the value of
@@ -64,12 +64,14 @@ class App extends React.Component {
     );
   }
 
+  @autobind
   updateFilterStr(filterStr) {
     this.setState(update(this.state, {
       filterStr: {$set: filterStr}
     }));
   }
 
+  @autobind
   fireSearch(searchTerm) {
     // TODO: add searchInProgress to state
     const self = this;
