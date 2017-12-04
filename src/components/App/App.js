@@ -2,6 +2,7 @@ import React from 'react';
 import update from 'immutability-helper';
 import autobind from 'autobind-decorator';
 
+import Loader from 'wix-style-react/Loader';
 import s from './App.scss';
 import SearchBar from '../SearchBar';
 import SearchResults from '../SearchResults';
@@ -56,9 +57,17 @@ class App extends React.Component {
             />
         </div>
         <div className={s.searchResultsPane}>
-          <SearchResults
-            data={App.getFilteredData(restaurantArray, this.state.filterStr, 'title')}
-            />
+          {this.state.searchInProgress ? (
+            <Loader
+              dataHook="search-loader"
+              size="large"
+              text={`Searching for [${this.state.searchTerm}]`}
+              />
+          ) : (
+            <SearchResults
+              data={App.getFilteredData(restaurantArray, this.state.filterStr, 'title')}
+              />
+          )}
         </div>
       </div>
     );
