@@ -8,18 +8,21 @@ import SearchBar from '../SearchBar';
 import SearchResults from '../SearchResults';
 import staticData from '../../data';
 
+const STATIC_SEARCH_RESULT = staticData.value.results;
+const DEFAULT_APP_STATE = {
+  filterStr: '',
+  searchTerm: '',
+  searchResults: [],
+  searchInProgress: false,
+  showStaticData: false
+};
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      filterStr: '',
-      searchTerm: '',
-      searchResults: [],
-      searchInProgress: false
-    };
-
+    this.state = DEFAULT_APP_STATE;
   }
+
   /**
    * Creates a filtered data array, selecting only rows in which the value of
    * the property named [filedName] includes the filter string.
@@ -34,8 +37,7 @@ class App extends React.Component {
   }
 
   render() {
-    // const searchResults = staticData.value.results;
-    const searchResults = this.state.searchResults;
+    const searchResults = this.state.showStaticData ? STATIC_SEARCH_RESULT : this.state.searchResults;
 
     const restaurantArray = searchResults.map(item => {
       return {
@@ -52,12 +54,14 @@ class App extends React.Component {
         <div className={s.searchPane}>
           <SearchBar
             data={restaurantArray}
+            showStaticData={this.state.showStaticData}
+            setShowStaticData={this.setShowStaticData}
             updateFilter={this.updateFilterStr}
             fireSearch={this.fireSearch}
             />
         </div>
         <div className={s.searchResultsPane}>
-          {this.state.searchInProgress ? (
+          {this.state.searchInProgress && !this.state.showStaticData ? (
             <Loader
               dataHook="search-loader"
               size="large"
@@ -81,6 +85,13 @@ class App extends React.Component {
   }
 
   @autobind
+  setShowStaticData(enabled) {
+    this.setState(update(this.state, {
+      showStaticData: {$set: enabled}
+    }));
+  }
+
+  @autobind
   fireSearch(searchTerm) {
     // TODO: add searchInProgress to state
     const self = this;
@@ -88,7 +99,8 @@ class App extends React.Component {
       filterStr: '',
       searchTerm,
       searchResults: [],
-      searchInProgress: true
+      searchInProgress: true,
+      showStaticData: false
     });
 
     fetch('https://spice-prod.appspot.com/v1.1', {

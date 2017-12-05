@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import s from './SearchBar.scss';
 import Search from 'wix-style-react/Search';
+import Checkbox from 'wix-style-react/Checkbox';
 
 const SearchBar = props => {
 
@@ -13,6 +15,10 @@ const SearchBar = props => {
   // ESLint forces handler to be prefixed by 'handle'
   const handleManuallyInputSearch = inputValue => {
     props.fireSearch(inputValue);
+  };
+
+  const handleCheckboxChange = _ref2 => {
+    props.setShowStaticData(!!_ref2.target.checked);
   };
 
   const options = props.data.map((item, index) => {
@@ -33,6 +39,13 @@ const SearchBar = props => {
           options={options}
           placeholder="Search Term"
           />
+        <Checkbox
+          dataHook="storybook-checkbox"
+          checked={props.showStaticData}
+          onChange={handleCheckboxChange}
+          >
+          Show Static Data
+        </Checkbox>
       </div>
       <div className={s.filterInput}>
         <Search
@@ -45,10 +58,12 @@ const SearchBar = props => {
       </div>
     </div>
   );
+
 };
 
 SearchBar.propTypes = {
   data: PropTypes.array.isRequired,
+  showStaticData: PropTypes.bool.isRequired,
   updateFilter: PropTypes.func.isRequired,
   fireSearch: PropTypes.func.isRequired
 };
