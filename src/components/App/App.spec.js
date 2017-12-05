@@ -5,6 +5,9 @@ import App from './App';
 import SearchBar from '../SearchBar';
 import SearchResults from '../SearchResults';
 
+// import Checkbox from 'wix-style-react/Checkbox';
+// import {dataTableTestkitFactory} from 'wix-style-react/dist/testkit/enzyme';
+
 describe('App', () => {
   let wrapper;
 
@@ -35,5 +38,18 @@ describe('App', () => {
     expect(wrapper.find(SearchResults)).to.have.length(1);
 
   });
+
+  /*
+  it('shows static data', () => {
+    wrapper = mount(
+      <App/>, {attachTo: document.createElement('div')}
+    );
+    wrapper.find(Checkbox).simulate('click');
+    const dataHook = 'dataTable';
+    const testKit = dataTableTestkitFactory({wrapper, dataHook});
+    expect(testKit.getRowsCount()).to.be.eq(10);
+
+  });
+  */
 
 });

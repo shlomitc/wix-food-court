@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import DataTable from 'wix-style-react/DataTable';
 
 const SearchResults = props => {
+  // dataHook="dataTable"
   return (
     <DataTable
       data={props.data}
