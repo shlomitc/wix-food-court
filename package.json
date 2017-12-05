@@ -9,11 +9,11 @@
     "url": ""
   },
   "scripts": {
-    "start": "yoshi start",
-    "pretest": "yoshi lint && yoshi build",
+    "start": "haste start",
+    "pretest": "haste lint && haste build",
     "build": ":",
-    "test": "yoshi test",
-    "release": "yoshi release"
+    "test": "haste test",
+    "release": "haste release"
   },
   "devDependencies": {
     "autobind-decorator": "^2.1.0",
@@ -30,7 +30,7 @@
     "prop-types": "^15.6.0",
     "react-addons-test-utils": "^15.3.2",
     "react-test-renderer": "^15.5.4",
-    "yoshi": "latest"
+    "haste-preset-yoshi": "latest"
   },
   "dependencies": {
     "axios": "^0.16.1",
@@ -49,9 +49,14 @@
       "es2015",
       "stage-0"
     ],
-    "plugins": ["transform-decorators-legacy"]
+    "plugins": [
+      "transform-decorators-legacy"
+    ]
   },
   "eslintConfig": {
     "extends": "wix/react"
+  },
+  "haste": {
+    "preset": "yoshi"
   }
 }
